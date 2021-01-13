@@ -71,7 +71,7 @@ class ConanProxy(object):
                                         " Use '--update' to check in the remote."
                                         % (cur_revision, repr(ref)))
 
-        if not check_updates:
+        if not check_updates or ref.revision is not None:
             status = RECIPE_INCACHE
             ref = ref.copy_with_rev(cur_revision)
             return conanfile_path, status, cur_remote, ref
